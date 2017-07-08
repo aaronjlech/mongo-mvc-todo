@@ -7,7 +7,6 @@ const router = require('express').Router();
 const controller = {
 
     getAllItems:  (request, response) => { 
-        console.log(TodoItem);
         TodoItem.find((err, todos) =>{
             if(err){
                 response.status(500).send(err);
@@ -28,13 +27,17 @@ const controller = {
     },
 
     createItem: (request, response) => {
+        console.log(request.body);
       let todo = new TodoItem(request.body);
       todo.save((err, newTodo) => {
+
           if(err){
+
               response.status(500).send(err);
           } else {
-              response.send(newTodo);
+            response.send(newTodo);
           }
+
       })
     },
     updateItem: (request, response) => {

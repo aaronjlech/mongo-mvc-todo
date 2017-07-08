@@ -8,12 +8,7 @@ const todoSchema = new mongoose.Schema({
 })
 
 
-
-
-
 const TodoItem = mongoose.model('TodoItem', todoSchema);
-
-
 
 module.exports = TodoItem
 

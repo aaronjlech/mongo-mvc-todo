@@ -15,7 +15,7 @@ var app = app || {};
 			title: '',
 			completed: false
 		},
-		idAttribute: '_id', 
+		idAttribute: '_id',
 
 		// Toggle the `completed` state of this todo item.
 		toggle: function () {
