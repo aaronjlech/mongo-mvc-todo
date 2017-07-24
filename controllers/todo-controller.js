@@ -1,16 +1,14 @@
 const TodoItem = require("../models/todo-schema");
-
 const router = require('express').Router();
-
-
 
 const controller = {
 
-    getAllItems:  (request, response) => { 
+    getAllItems:  (request, response) => {
         TodoItem.find((err, todos) =>{
             if(err){
                 response.status(500).send(err);
             }else {
+               console.log(todos);
                 response.send(todos);
             }
         })
@@ -53,12 +51,18 @@ const controller = {
                 })
             }
         })
+
+
+        TodoItem.findByIdAndUpdate(id, function(error, data) {
+            let relatedBook = data.relatedBooks.find((bk => bk_id === relatedId ));
+            relatedBook
+        })
     },
 
     deleteItem: (request, response) => {
         const { id } = request.params;
         TodoItem.findByIdAndRemove(id, (err, todo) => {
-            reponse.send(todo);
+            response.send(todo);
         });
     }
 }
